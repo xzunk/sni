@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SNI Host Detector</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Nunito', sans-serif;
+        }
+        .hero {
+            background: linear-gradient(135deg, #00d1b2, #00b8d4);
+            color: white;
+        }
+        .title {
+            color: inherit;
+        }
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .notification {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="hero is-medium">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1">SNI Host Detector</h1>
+                <h2 class="subtitle is-4">Detect and display the current SNI host of your internet connection</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content-section">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <p class="has-text-centered mb-5">This tool detects the Server Name Indication (SNI) host used in your current connection. SNI is part of the TLS handshake, and for this webpage, it corresponds to the hostname you're accessing.</p>
+                    <div id="sni-display" class="notification is-info">
+                        Detecting SNI host...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Powered by modern web technologies. Styled with Bulma CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sniDisplay = document.getElementById('sni-display');
+            const currentHost = window.location.hostname || 'Unknown (localhost or direct IP access)';
+            sniDisplay.textContent = `Current SNI Host: ${currentHost}`;
+            sniDisplay.classList.add('is-success');
+        });
+    </script>
+</body>
+</html>
